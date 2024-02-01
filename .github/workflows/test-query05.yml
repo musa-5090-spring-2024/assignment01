@@ -1,7 +1,5 @@
 name: Test Query 05
 on:
-  pull_request:
-    branches: [ main ]
   push:
     branches: [ main ]
 
