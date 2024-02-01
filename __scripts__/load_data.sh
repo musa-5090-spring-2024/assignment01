@@ -7,6 +7,15 @@ SCRIPTDIR=$(readlink -f $(dirname $0))
 DATADIR=$(readlink -f $(dirname $0)/../__data__)
 mkdir -p ${DATADIR}
 
+# Create a configuration file for the database connection
+cat << EOF > ${SCRIPTDIR}/../.env
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_NAME=musa_509
+POSTGRES_USER=postgres
+POSTGRES_PASS=postgres
+EOF
+
 # Download and unzip trip data
 curl -L https://bicycletransit.wpenginepowered.com/wp-content/uploads/2022/12/indego-trips-2022-q3.zip > ${DATADIR}/indego-trips-2022-q3.zip
 unzip -o ${DATADIR}/indego-trips-2022-q3.zip -d ${DATADIR}
