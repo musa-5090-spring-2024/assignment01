@@ -9,6 +9,8 @@
 
 All data is available from [Indego's Data site](https://www.rideindego.com/about/data/).
 
+For any questions that refer to Meyerson Hall, use latitude `39.952415` and longitude `-75.192584` as the coordinates for the building.
+
 Load all three datasets into a PostgreSQL database schema named `indego` (the name of your database is not important). Your schema should have the following structure:
 
 > This structure is important -- particularly the **table names** and the **lowercase field names**; if your queries are not built to work with this structure then _your assignment will fail the tests_.
