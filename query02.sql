@@ -9,14 +9,16 @@
     Remember you can do calculations in the select clause.
 */
 
+WITH t2 AS (
+    SELECT COUNT(*) AS trip22
+    FROM indego.trips_2022_q3
+)
+
 SELECT ROUND(100 * (t2.trip22 * 1.00 - t1.trip21) / t1.trip21, 2)::text || '%' AS perc_change
 FROM (
     SELECT COUNT(*) AS trip21
     FROM indego.trips_2021_q3
-) AS t1 CROSS JOIN (
-    SELECT COUNT(*) AS trip22
-    FROM indego.trips_2022_q3
-) AS t2;
+) AS t1 CROSS JOIN t2;
 
 
 /*

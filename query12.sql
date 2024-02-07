@@ -10,7 +10,7 @@
 SELECT COUNT(*) AS num_stations
 FROM indego.station_statuses
 WHERE ST_DWITHIN(
-    wkb_geometry::geography,
+    geog,
     'POINT(-75.192584 39.952415)'::geography,
     1000
 );

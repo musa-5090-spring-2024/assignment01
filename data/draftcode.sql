@@ -164,7 +164,7 @@ WHERE ST_DWithin(
 SELECT
     id AS station_id,
     name AS station_name,
-	ROUND(ST_Distance(wkb_geometry, 'POINT(-75.192584 39.952415)'::geography) / 50) * 50 AS distance
+	ROUND(ST_Distance(wkb_geometry::geography, 'POINT(-75.192584 39.952415)'::geography) / 50) * 50 AS distance
 FROM
     indego.station_statuses
 ORDER BY distance DESC
