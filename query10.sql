@@ -13,7 +13,8 @@ select  id as station_id,
 	geog as station_geog
 from 
 	indego.station_statuses
-order by distance asc;
+order by distance desc;
+
 
 -- notes to self:
 --	1) st_distance returns coordinate distance if given geometries
