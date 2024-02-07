@@ -5,3 +5,6 @@
 */
 
 -- Enter your SQL query here
+select cast(round(avg(cast(st_distance(cast(ST_GeomFromText('POINT(-75.192584 39.952415)',4326) as geography), geog) as numeric)),-3)/1000 as integer) as avg_distance_km
+from 
+	indego.station_statuses;

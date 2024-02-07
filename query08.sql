@@ -9,7 +9,23 @@
 */
 
 -- Enter your SQL query here
-
+-- !!working answer!! 
+select
+	start_station as station_id ,
+	count(start_station) as num_trips,
+	ST_SetSrid(ST_MakePoint(start_lon::float, start_lat::float),4326) as station_geog
+from 
+	((select start_lon, start_lat, start_station, start_time
+		from indego.trips_2021_q3
+		where extract(hour from start_time::timestamp) >=7 and extract(hour from start_time::timestamp) < 10)
+	union
+	(select start_lon, start_lat, start_station, start_time
+		from indego.trips_2022_q3
+		where extract(hour from start_time::timestamp) >=7 and extract(hour from start_time::timestamp) < 10)
+ 	)
+group by start_station, start_lon, start_lat
+order by num_trips desc
+limit 5;
 
 /*
     Hint: Use the `EXTRACT` function to get the hour of the day from the

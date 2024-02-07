@@ -10,6 +10,10 @@
 */
 
 -- Enter your SQL query here
+select round((abs((select count(*) as num_trips_22
+	from indego.trips_2022_q3)-(select count(*) as num_trips_21
+	from indego.trips_2021_q3))/(select count(*) as num_trips_21
+	from indego.trips_2021_q3)::float*100)::numeric,2)::text || '%' as perc_change;
 
 
 
