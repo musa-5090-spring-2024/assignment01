@@ -10,8 +10,17 @@
 */
 
 -- Enter your SQL query here
+WITH TripCounts AS (
+    SELECT
+        (SELECT COUNT(*) FROM indego.trips_2021_q3) AS num_trips_21,
+        (SELECT COUNT(*) FROM indego.trips_2022_q3) AS num_trips_22
+)
 
-
+SELECT
+    num_trips_21,
+    num_trips_22,
+    ROUND(((num_trips_22 - num_trips_21)::numeric / num_trips_21) * 100, 2) AS perc_change
+FROM TripCounts;
 
 /*
     If you want to get fancier here, you can cast the result to a string and
@@ -22,3 +31,6 @@
     This uses the type casting (number to string) and string concatenation
     operator (`||`, double pipes) that's essentially a `+` for strings.
 */
+
+
+-- Result: 3.98%
