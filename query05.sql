@@ -5,3 +5,11 @@
 */
 
 -- Enter your SQL query here
+SELECT GREATEST(t1.max21, t2.max22) AS max_duration
+FROM (
+    SELECT MAX(duration) AS max21
+    FROM indego.trips_2021_q3
+) AS t1 CROSS JOIN (
+    SELECT MAX(duration) AS max22
+    FROM indego.trips_2022_q3
+) AS t2;
