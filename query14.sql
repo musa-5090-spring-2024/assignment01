@@ -8,7 +8,7 @@
 
 -- Enter your SQL query here
 WITH nearest_station AS (
-   SELECT
+    SELECT
        id AS station_id,
 	   name AS station_name,
        geog AS station_geog,
