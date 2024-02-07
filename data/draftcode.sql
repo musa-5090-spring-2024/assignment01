@@ -43,7 +43,7 @@ FROM indego.trips_2021_q3
 
 --- Question 4 What is the average duration of a trip for 2021?
 SELECT ROUND(AVG(duration),2) AS avg_duration
-FROM indego.trips_2021_q3
+FROM indego.trips_2022_q3
 
 --- Question 5 What is the longest duration trip across the two quarters?
 
@@ -136,8 +136,8 @@ GROUP BY passholder_type
 
 SELECT
     id AS station_id,
-    wkb_geometry::geography AS station_geog,
-    ROUND(ST_Distance(wkb_geometry, 'POINT(-75.192584 39.952415)'::geography) / 50) * 50 AS distance
+    geog AS station_geog,
+    ROUND(ST_Distance(geog, 'POINT(-75.192584 39.952415)'::geography) / 50) * 50 AS distance
 FROM
     indego.station_statuses;
 
@@ -145,7 +145,7 @@ FROM
 --- Your result should have a single record with a single column named avg_distance_km.
 
 SELECT 
-	ROUND(AVG(ST_Distance(wkb_geometry, 'POINT(-75.192584 39.952415)'::geography)) / 1000) AS avg_distance_km
+	ROUND(AVG(ST_Distance(geog, 'POINT(-75.192584 39.952415)'::geography)) / 1000) AS avg_distance_km
 FROM 
 	indego.station_statuses;
 
@@ -154,7 +154,7 @@ FROM
 SELECT COUNT(*) AS num_stations
 FROM indego.station_statuses
 WHERE ST_DWithin(
-    wkb_geometry::geography, 
+    geog,
     'POINT(-75.192584 39.952415)'::geography,
     1000
 );
@@ -164,7 +164,7 @@ WHERE ST_DWithin(
 SELECT
     id AS station_id,
     name AS station_name,
-	ROUND(ST_Distance(wkb_geometry::geography, 'POINT(-75.192584 39.952415)'::geography) / 50) * 50 AS distance
+	ROUND(ST_Distance(geog, 'POINT(-75.192584 39.952415)'::geography) / 50) * 50 AS distance
 FROM
     indego.station_statuses
 ORDER BY distance DESC
@@ -175,7 +175,7 @@ LIMIT 1
 SELECT
     id AS station_id,
     name AS station_name,
-	ROUND(ST_Distance(wkb_geometry, 'POINT(-75.192584 39.952415)'::geography) / 50) * 50 AS distance
+	ROUND(ST_Distance(geog, 'POINT(-75.192584 39.952415)'::geography) / 50) * 50 AS distance
 FROM
     indego.station_statuses
 ORDER BY distance ASC
