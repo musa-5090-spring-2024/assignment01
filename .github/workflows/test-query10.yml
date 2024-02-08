@@ -42,7 +42,7 @@ jobs:
     - name: Load test data
       run: __scripts__/load_data.sh
     - name: Enable PostGIS extension
-      run: psql -U postgres -h localhost -p 5432 -d assignment01 -W 532673 -c 'CREATE EXTENSION IF NOT EXISTS postgis;'
+      run: echo 'CREATE EXTENSION IF NOT EXISTS postgis;' | PGPASSWORD=${{ secrets.DB_PASSWORD }} psql -U postgres -h localhost -p 5432 -d assignment01 -w
     - name: Run tests
       run: |
         npm test __tests__/test_query10.js
