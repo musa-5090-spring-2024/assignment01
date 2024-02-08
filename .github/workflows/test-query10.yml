@@ -18,7 +18,7 @@ jobs:
       postgres:
         image: postgis/postgis
         env:
-          POSTGRES_PASSWORD: 532673
+          POSTGRES_PASSWORD: postgres
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
