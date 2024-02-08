@@ -11,7 +11,7 @@ WITH near_distance AS (
         ST_Distance(
         ST_SetSRID(ST_MakePoint(-75.192584, 39.952415), 4326)::geography,
         geog, true) AS distance
-    from indego.indego_station_statuses
+    from indego_station_statuses
 )
 
 SELECT

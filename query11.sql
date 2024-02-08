@@ -12,7 +12,7 @@ WITH Avg_distance AS (
        ROUND(ST_Distance(
            ST_SetSRID(ST_MakePoint(-75.192584, 39.952415), 4326)::geography,
            geog, true) / 1000) AS distance
-   FROM indego.indego_station_statuses
+   FROM indego_station_statuses
 )
 
 SELECT
