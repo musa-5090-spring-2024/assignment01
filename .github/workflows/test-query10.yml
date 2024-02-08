@@ -41,6 +41,8 @@ jobs:
       run: sudo apt install gdal-bin -y
     - name: Load test data
       run: __scripts__/load_data.sh
+    - name: Enable PostGIS extension
+      run: psql -U postgres -h localhost -p 5432 -d assignment01 -c 'CREATE EXTENSION IF NOT EXISTS postgis;'
     - name: Run tests
       run: |
         npm test __tests__/test_query10.js
