@@ -97,12 +97,13 @@ Year 2022 Q3: 2,060
 - Null: 43
 
 10. [Using the station status dataset, find the distance in meters of each station from Meyerson Hall.](query10.sql)
+"\outcome\query10_result.csv"
 
 11. [What is the average distance (in meters) of all stations from Meyerson Hall?](query11.sql)
-3.28km
+3km
 
 12. [How many stations are within 1km of Meyerson Hall?](query12.sql)
-32
+16
 
 13. [Which station is furthest from Meyerson Hall?](query13.sql)
 - station_id = 3323

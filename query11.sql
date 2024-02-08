@@ -16,7 +16,7 @@ WITH Avg_distance AS (
 )
 
 SELECT
-    AVG(distance) AS avg_distance_km
+    ROUND(AVG(distance)) AS avg_distance_km
 FROM Avg_distance;
 
--- Result: 3.28km
+-- Result: 3km

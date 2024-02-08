@@ -11,8 +11,16 @@
 -- Enter your SQL query here
 
 -- Alter the column 'id' of table 'indego.indego_station_statuses' from integer to text 
-ALTER TABLE indego.indego_station_statuses
-ALTER COLUMN id TYPE TEXT;
+--ALTER TABLE indego.indego_station_statuses
+--ALTER COLUMN id TYPE TEXT;
+
+-- Add a new geography column named 'geog_3857' to your table
+--ALTER TABLE indego.indego_station_statuses
+--    ADD COLUMN geom_3857 geometry;
+
+-- Update the new column with transformed geography data
+--UPDATE indego.indego_station_statuses SET 
+--    geom_3857 = st_transform(geog::geometry, 3857);
 
 WITH PopTrip AS (
     SELECT
