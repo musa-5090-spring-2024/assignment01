@@ -18,7 +18,7 @@ jobs:
       postgres:
         image: postgis/postgis
         env:
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: 532673
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -41,8 +41,6 @@ jobs:
       run: sudo apt install gdal-bin -y
     - name: Load test data
       run: __scripts__/load_data.sh
-    - name: Enable PostGIS extension
-      run: echo 'CREATE EXTENSION IF NOT EXISTS postgis;' | PGPASSWORD=${{ secrets.DB_PASSWORD }} psql -U postgres -h localhost -p 5432 -d assignment01 -w
     - name: Run tests
       run: |
         npm test __tests__/test_query10.js
