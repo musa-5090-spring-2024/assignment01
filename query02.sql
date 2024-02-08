@@ -17,8 +17,6 @@ WITH TripCounts AS (
 )
 
 SELECT
-    num_trips_21,
-    num_trips_22,
     ROUND(((num_trips_22 - num_trips_21)::numeric / num_trips_21) * 100, 2) AS perc_change
 FROM TripCounts;
 
