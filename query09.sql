@@ -8,7 +8,6 @@
 
 -- Enter your SQL query here
 SELECT
-    CAST(EXTRACT(YEAR FROM start_time) AS TEXT) AS trip_year,
     passholder_type,
     COUNT(*) AS num_trips
 FROM (
@@ -17,5 +16,5 @@ FROM (
     SELECT start_time, passholder_type FROM indego.trips_2022_q3
     -- Add more UNION ALL statements for other years/quarters as needed
 ) AS combined_trips
-GROUP BY trip_year, passholder_type
-ORDER BY trip_year, passholder_type;
+GROUP by passholder_type
+ORDER BY passholder_type;
