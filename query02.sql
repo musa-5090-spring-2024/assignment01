@@ -11,8 +11,25 @@
 
 -- Enter your SQL query here
 
+WITH t1 AS (
+    SELECT (
+        (
+            SELECT count(*)
+            FROM indego.trips_2022_q3
+        )
+        - (
+            SELECT count(*)
+            FROM indego.trips_2021_q3
+        )
+    ) AS n_change
+)
 
-
+SELECT
+    round((n_change::numeric / (
+        SELECT count(*)::numeric
+        FROM indego.trips_2021_q3
+    ) * 100), 2)::text || '%' AS perc_change
+FROM t1
 /*
     If you want to get fancier here, you can cast the result to a string and
     concatenate a '%' to the end. For example:
