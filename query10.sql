@@ -8,6 +8,8 @@
 */
 
 -- Enter your SQL query here
+create extension if not exists postgis;
+
 SELECT
     id AS station_id,
     geog AS station_geog,
