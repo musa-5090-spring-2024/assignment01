@@ -9,6 +9,5 @@
 SELECT
 round(
     AVG( duration):: NUMERIC ,2
-    )
+    ) as avg_duration
     from indego.trips_2022_q3
-as avg_duration

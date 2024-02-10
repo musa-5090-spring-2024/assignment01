@@ -10,7 +10,7 @@
 SELECT
 id AS station_id,
 name as station_name,
-st_distance(st_setSRID(st_makepoint(longitude,latitude),4326)::geography, st_setSRID(st_makepoint(-75.192584,39.952415),4326)::geography) as distance
+ROUND(st_distance(st_setSRID(st_makepoint(longitude,latitude),4326)::geography, st_setSRID(st_makepoint(-75.192584,39.952415),4326)::geography)/50)*50 as distance
 FROM
 indego_station_statuses
 ORDER BY distance DESC
