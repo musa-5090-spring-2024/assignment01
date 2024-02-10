@@ -9,6 +9,20 @@
 */
 
 -- Enter your SQL query here
+SELECT
+start_station as station_id,
+ start_lon || ',' ||start_lat AS station_geog,
+count(*) as num_trips
+from (SELECT start_lon, start_lat, start_station 
+from indego.trips_2021_q3
+where extract( HOUR from start_time) >= 7 and extract(HOUR from start_time) < 10 
+UNION ALL
+SELECT start_lon, start_lat, start_station 
+from indego.trips_2022_q3
+where extract( HOUR from start_time) >= 7 and extract(HOUR from start_time) < 10 )
+GROUP BY start_station ,start_lon,start_lat
+ORDER BY num_trips DESC
+LIMIT 5
 
 
 /*

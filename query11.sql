@@ -5,3 +5,9 @@
 */
 
 -- Enter your SQL query here
+SELECT
+AVG(st_distance(ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)::geography, ST_SetSRID(st_makepoint(-75.192584,39.952415),4326)::geography))/1000
+FROM
+indego_station_statuses
+AS avg_distance_km
+
