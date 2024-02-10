@@ -7,9 +7,22 @@
     decimal places and name the resulting field `perc_change`.
 
     Remember you can do calculations in the select clause.
+
+    3.98
 */
 
 -- Enter your SQL query here
+with num_trips_2021 as (
+    select count(*) as num_trips_2021
+    from indego.trips_2021_q3
+),
+num_trips_2022 as (
+    select count(*) as num_trips_2022
+    from indego.trips_2022_q3
+)
+select (round((num_trips_2022.num_trips_2022 - num_trips_2021.num_trips_2021) * 100.0 / num_trips_2021.num_trips_2021,2))::text || '%' as perc_change
+from num_trips_2021
+cross join num_trips_2022;
 
 
 

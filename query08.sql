@@ -10,6 +10,24 @@
 
 -- Enter your SQL query here
 
+select 
+    start_station as station_id,
+    st_setsrid(st_point(start_lon,start_lat), 4326) as station_geog,
+    count(*) as num_trips
+from (
+    select start_station, start_lon, start_lat, start_time
+        from indego.trips_2021_q3
+
+    union all
+
+    select start_station, start_lon, start_lat, start_time
+        from indego.trips_2022_q3
+    ) as all_years
+    where extract(hour from start_time) between 7 and 9
+group by start_station, start_lon, start_lat
+order by num_trips desc
+limit 5;
+
 
 /*
     Hint: Use the `EXTRACT` function to get the hour of the day from the
