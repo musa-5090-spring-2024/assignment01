@@ -12,7 +12,7 @@
 select
     id as station_id,
     geog as station_geog,
-    floor(st_distance(
+    round(st_distance(
             st_transform(geog::geometry, 32129),
             st_transform(
                 st_setsrid(
