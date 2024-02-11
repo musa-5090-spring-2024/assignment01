@@ -6,4 +6,17 @@
     Meyerson Hall, rounded to the nearest 50 meters.
 */
 
--- Enter your SQL query here
+SELECT
+    id AS station_id,
+    name AS station_name,
+    ROUND(ST_Distance(
+       ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)::GEOGRAPHY,
+        ST_SetSRID(ST_MakePoint(-75.192584, 39.952415), 4326)::GEOGRAPHY
+    ) / 50.0) * 50 AS distance
+FROM
+    indego.station_statuses
+ORDER BY
+    distance DESC
+LIMIT
+    1;
+

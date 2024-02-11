@@ -4,4 +4,11 @@
     column named avg_distance_km.
 */
 
--- Enter your SQL query here
+SELECT
+    ROUND(AVG(ST_Distance(
+        ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)::GEOGRAPHY,
+        ST_SetSRID(ST_MakePoint(-75.192584, 39.952415), 4326)::GEOGRAPHY
+    ) / 1000)) AS avg_distance_km
+FROM
+    indego.station_statuses;
+
