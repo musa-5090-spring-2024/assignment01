@@ -7,7 +7,23 @@
 
 -- Enter your SQL query here
 
+with temptable as (
+    select *
+    from indego.trips_2021_q3
+    union
+    select *
+    from indego.trips_2022_q3
+)
 
+select
+    extract('year' from start_time) as trip_year,
+    extract('quarter' from start_time) as trip_quarter,
+    count(*) as num_trips
+from temptable
+where(
+    extract('day' from start_time) !=
+    extract('day' from end_time))
+group by trip_year, trip_quarter
 
 /*
 
