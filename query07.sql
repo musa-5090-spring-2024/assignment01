@@ -6,8 +6,24 @@
 */
 
 -- Enter your SQL query here
-
-
+SELECT trip_year, trip_quarter, COUNT(*) AS num_trips
+FROM (
+    SELECT
+        EXTRACT(YEAR FROM start_time) AS trip_year,
+        'Q3' AS trip_quarter,
+        start_time::DATE AS start_date,
+        end_time::DATE AS end_date
+    FROM indego.trips_2021_q3
+    UNION ALL
+    SELECT
+        EXTRACT(YEAR FROM start_time) AS trip_year,
+        'Q3' AS trip_quarter,
+        start_time::DATE AS start_date,
+        end_time::DATE AS end_date
+    FROM indego.trips_2022_q3
+) AS combined_trips
+WHERE start_date != end_date
+GROUP BY trip_year, trip_quarter;
 
 /*
 
