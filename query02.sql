@@ -11,6 +11,11 @@
 
 -- Enter your SQL query here
 
+select
+    (100*((select count(*) from indego.trips_2022_q3) -
+    (select count(*) from indego.trips_2021_q3)) /
+    ((select count(*) from indego.trips_2021_q3))) 
+    ::text || '%' AS perc_change
 
 
 /*
