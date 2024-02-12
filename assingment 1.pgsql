@@ -60,7 +60,7 @@ select *
 from indego.trips_2021_q3
 
 SELECT * FROM indego.trips_2021_q3 LIMIT 10;
-
+SELECT * FROM indego.station_statuses LIMIT 10;
 
 alter table indego.stations
 alter column go_live_date type date
