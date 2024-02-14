@@ -10,6 +10,13 @@
 */
 
 -- Enter your SQL query here
+SELECT 
+    ROUND((
+        ((SELECT COUNT(*)::NUMERIC FROM indego.trips_2022_q3) - 
+        (SELECT COUNT(*)::NUMERIC FROM indego.trips_2021_q3)) / 
+        (SELECT COUNT(*)::NUMERIC FROM indego.trips_2021_q3)
+    ) * 100, 2) AS perc_change
+
 
 
 

@@ -66,9 +66,24 @@ Write a query to answer each of the questions below.
 
 2. [What is the percent change in trips in Q3 2022 as compared to Q3 2021?](query02.sql)
 
+    ```SQL
+    SELECT 
+    ROUND((
+        (SELECT COUNT(*) FROM indego.trips_2022_q3) - 
+        (SELECT COUNT(*) FROM indego.trips_2021_q3)
+    )::NUMERIC / 
+    (SELECT COUNT(*) FROM indego.trips_2021_q3), 2) * 100 AS perc_change
+   ```
+
 3. [What is the average duration of a trip for 2021?](query03.sql)
 
+  SELECT ROUND(AVG(duration)::NUMERIC, 2) AS avg_duration 
+  FROM indego.trips_2021_q3
+
 4. [What is the average duration of a trip for 2022?](query04.sql)
+
+ SELECT ROUND(AVG(duration)::NUMERIC, 2) AS avg_duration 
+ FROM indego.trips_2022_q3
 
 5. [What is the longest duration trip across the two quarters?](query05.sql)
 
