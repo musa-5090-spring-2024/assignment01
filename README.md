@@ -66,6 +66,9 @@ Write a query to answer each of the questions below.
 
 2. [What is the percent change in trips in Q3 2022 as compared to Q3 2021?](query02.sql)
 
+
+
+
 3. [What is the average duration of a trip for 2021?](query03.sql)
 
 4. [What is the average duration of a trip for 2022?](query04.sql)
