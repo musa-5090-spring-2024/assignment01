@@ -7,9 +7,9 @@
 */
 
 -- Enter your SQL query here
-
+-- TRIM(both) means trim blank space from both ends
 SELECT
-    passholder_type,
+    TRIM(BOTH FROM passholder_type) AS passholder_type,
     COUNT(*) AS num_trips
 FROM (
     SELECT *
@@ -18,4 +18,4 @@ FROM (
     SELECT *
     FROM indego.trips_2022_q3
 )
-GROUP BY passholder_type;
+GROUP BY TRIM(BOTH FROM passholder_type);
