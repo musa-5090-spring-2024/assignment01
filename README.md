@@ -74,7 +74,12 @@ Write a query to answer each of the questions below.
 
     _Why are there so many trips of this duration?_
 
-    **Answer:**
+    **Answer:
+After conducting a query, it was found that there are 1,241 trips within the dataset that each have a duration of 1440 minutes, equivalent to 24 hours. This analysis, which took into account variables such as duration, start station, end station, plan duration, bike type, and passholder type, sheds light on various user behaviors and systemic aspects of the bike-sharing program.
+
+One significant insight suggests that bikes involved in these 24-hour trips might be either lost or stolen. This is indicated by instances where the end station's ID is labeled as 3000, whereas valid station IDs begin from 3005, implying improper return of these bikes. The system seems to utilize a 24-hour duration marker as an indicator for bikes that are not returned within the expected timeframe, marking them for further investigation or user confirmation regarding their status.
+
+Moreover, the phenomenon of whole-day rentals emerges as another factor. Users opting for bikes for an entire day for leisure, tourism, or other purposes often return them just before the 24-hour threshold to avoid extra charges. This pattern is particularly observable in trips that begin and end at the same location, like the Pennsylvania Convention Center, suggesting a tourist demographic that prefers to explore the vicinity at their leisure. **
 
 6. [How many trips in each quarter were shorter than 10 minutes?](query06.sql)
 

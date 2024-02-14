@@ -7,4 +7,17 @@
     distance. Round to the nearest fifty meters.
 */
 
--- Enter your SQL query here
+SELECT
+    id AS station_id,
+    ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)  AS station_geog,
+    ROUND (ST_Distance(
+       ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)::GEOGRAPHY,
+        ST_SetSRID(ST_MakePoint(-75.192584, 39.952415), 4326)::GEOGRAPHY
+    ) / 50.0) * 50 AS distance
+FROM
+    indego.station_statuses;
+
+
+
+
+
