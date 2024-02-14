@@ -3,10 +3,31 @@
 
     Your result should have one column named trip_year, one column named
     trip_quarter, and one column named num_trips.
+
+Answer:
+2021: 2301
+2022: 2060
+
 */
 
 -- Enter your SQL query here
-
+SELECT
+    '2021' AS trip_year,
+    'Q3' AS trip_quarter,
+    COUNT(*) AS num_trips
+FROM
+    indego.trips_2021_q3
+WHERE
+    DATE(start_time) != DATE(end_time)
+UNION ALL
+SELECT
+    '2022' AS trip_year,
+    'Q3' AS trip_quarter,
+    COUNT(*) AS num_trips
+FROM
+    indego.trips_2022_q3
+WHERE
+    DATE(start_time) != DATE(end_time);
 
 
 /*

@@ -1,6 +1,7 @@
 /*
     Example: How many bike trips in Q3 2021. Name the resulting column
-    num_trips.
+    num_trips. 
+    Answer: 300432
 */
 
 -- Enter your SQL query here

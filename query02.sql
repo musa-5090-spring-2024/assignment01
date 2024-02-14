@@ -7,9 +7,20 @@
     decimal places and name the resulting field `perc_change`.
 
     Remember you can do calculations in the select clause.
+
+    Answer: 3.98%
 */
 
 -- Enter your SQL query here
+WITH trip_counts AS (
+    SELECT
+        (SELECT COUNT(*) FROM indego.trips_2022_q3) AS num_trips22,
+        (SELECT COUNT(*) FROM indego.trips_2021_q3) AS num_trips21
+)
+SELECT
+    CAST(ROUND(100.0 * (num_trips22 - num_trips21) / num_trips21, 2) AS VARCHAR) || '%' AS perc_change
+FROM
+    trip_counts;
 
 
 
