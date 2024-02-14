@@ -6,7 +6,21 @@
 */
 
 -- Enter your SQL query here
+select 
+'2021' as trip_year,
+'3' as trip_quarter,
+count(*) as num_trips
+from indego.trips_2021_q3
+    where cast(start_time as date) <> cast(end_time as date)
 
+union all
+
+select
+'2022' as trip_year,
+'3' as trip_quarter,
+count(*) as num_trips
+from indego.trips_2022_q3
+    where cast(start_time as date) <> cast(end_time as date);
 
 
 /*
