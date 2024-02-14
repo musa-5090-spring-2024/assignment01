@@ -9,7 +9,34 @@
 */
 
 -- Enter your SQL query here
-
+SELECT 
+    station_id,
+    ST_SetSRID(ST_MakePoint(AVG(start_lon), AVG(start_lat)), 4326) AS station_geog,
+    COUNT(*) AS num_trips
+FROM (
+    SELECT 
+        start_station AS station_id, 
+        start_lat, 
+        start_lon
+    FROM 
+        indego.trips_2021_q3
+    WHERE 
+        EXTRACT(HOUR FROM start_time) >= 7 AND EXTRACT(HOUR FROM start_time) < 10
+    UNION ALL
+    SELECT 
+        start_station AS station_id, 
+        start_lat, 
+        start_lon
+    FROM 
+        indego.trips_2022_q3
+    WHERE 
+        EXTRACT(HOUR FROM start_time) >= 7 AND EXTRACT(HOUR FROM start_time) < 10
+) AS combined_trips
+GROUP BY 
+    station_id
+ORDER BY 
+    num_trips DESC
+LIMIT 5;
 
 /*
     Hint: Use the `EXTRACT` function to get the hour of the day from the
