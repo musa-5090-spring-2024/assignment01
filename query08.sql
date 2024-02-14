@@ -8,7 +8,23 @@
     station (named `num_trips`).
 */
 
--- Enter your SQL query here
+SELECT start_station AS station_id,
+       COUNT(*) AS num_trips,
+	   st_setsrid(st_makepoint(start_lon::float, start_lat::float), 4326) AS station_geog
+FROM (
+    SELECT start_station, start_lon, start_lat
+    FROM indego.trips_2021_q3
+    WHERE EXTRACT(HOUR FROM start_time) >= 7
+      AND EXTRACT(HOUR FROM start_time) <= 9
+    UNION ALL
+    SELECT start_station, start_lon, start_lat
+    FROM indego.trips_2022_q3 	
+    WHERE EXTRACT(HOUR FROM start_time) >= 7
+      AND EXTRACT(HOUR FROM start_time) <= 9
+) AS combined_tables
+GROUP BY start_station, start_lon, start_lat
+ORDER BY num_trips DESC
+LIMIT 5;
 
 
 /*
