@@ -10,6 +10,15 @@
 */
 
 -- Enter your SQL query here
+SELECT
+    ROUND(
+        CAST(
+            (
+                CAST((SELECT COUNT(*) FROM indego.trips_2022_q3) AS NUMERIC) - 
+                CAST((SELECT COUNT(*) FROM indego.trips_2021_q3) AS NUMERIC)
+            ) / CAST((SELECT COUNT(*) FROM indego.trips_2021_q3) AS NUMERIC) * 100
+        AS NUMERIC),
+    2)::text || '%' AS perc_change;
 
 
 

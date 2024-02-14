@@ -5,3 +5,17 @@
 */
 
 -- Enter your SQL query here
+SELECT
+    MAX(duration_minutes) AS max_duration
+FROM
+    (
+        SELECT
+            EXTRACT(EPOCH FROM (end_time - start_time)) / 60 AS duration_minutes
+        FROM
+            indego.trips_2021_q3
+        UNION ALL
+        SELECT
+            EXTRACT(EPOCH FROM (end_time - start_time)) / 60 AS duration_minutes
+        FROM
+            indego.trips_2022_q3
+    ) AS combined_durations;

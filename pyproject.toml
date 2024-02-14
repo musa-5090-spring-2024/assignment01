@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "musa-5090-assignment01"
+version = "0.1.0"
+description = ""
+authors = ["nlebovits <nissim.lebovits@vanderbilt.edu>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+psycopg2 = "^2.9.9"
+pandas = "^2.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

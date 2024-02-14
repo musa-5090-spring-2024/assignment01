@@ -7,3 +7,14 @@
 */
 
 -- Enter your SQL query here
+SELECT
+    passholder_type,
+    COUNT(*) AS num_trips
+FROM (
+    SELECT start_time, passholder_type FROM indego.trips_2021_q3
+    UNION ALL
+    SELECT start_time, passholder_type FROM indego.trips_2022_q3
+    -- Add more UNION ALL statements for other years/quarters as needed
+) AS combined_trips
+GROUP by passholder_type
+ORDER BY passholder_type;
