@@ -6,6 +6,26 @@
 */
 
 -- Enter your SQL query here
+select
+    yr as trip_year,
+    trip_quarter,
+    num_trips
+from
+    (select
+        2021 as yr,
+        3 as trip_quarter,
+        count(*) as num_trips
+    from indego.trips_2021_q3
+    where extract(day from start_time::date) != extract(day from end_time::date))
+union
+(
+    select
+        2022 as yr,
+        3 as trip_quarter,
+        count(*) as num_trips
+    from indego.trips_2022_q3
+    where extract(day from start_time::date) != extract(day from end_time::date)
+);
 
 
 

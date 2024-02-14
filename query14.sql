@@ -7,3 +7,16 @@
 */
 
 -- Enter your SQL query here
+select
+    id as station_id,
+    name as station_name,
+    floor(round(dist_to_meyer / 50, 0)) * 50 as distance
+from
+    (
+        select
+            *,
+            cast(st_distance(cast(st_geomfromtext('POINT(-75.192584 39.952415)', 4326) as geography), geog) as numeric) as dist_to_meyer
+        from indego.station_statuses
+    )
+order by distance asc
+limit 1;
