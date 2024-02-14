@@ -11,6 +11,16 @@
 
 -- Enter your SQL query here
 
+WITH year_2021 AS (
+    SELECT COUNT(*) AS trip21
+    FROM indego.trips_2021_q3
+)
+
+SELECT ROUND(100 * (year_2022.trip22 * 1.00 - year_2021.trip21) / year_2021.trip21, 2)::text || '%' AS perc_change
+FROM (
+    SELECT COUNT(*) AS trip22
+    FROM indego.trips_2022_q3
+) AS year_2022 CROSS JOIN year_2021;
 
 
 /*
