@@ -1,6 +1,4 @@
-SET search_path TO indego;
-CREATE EXTENSION IF NOT EXISTS postgis SCHEMA indego;
-SELECT PostGIS_full_version();
+alter database "m509A1" set search_path to indego;
 
 
 create schema if not exists indego;
