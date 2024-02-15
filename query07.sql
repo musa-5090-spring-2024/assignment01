@@ -1,3 +1,4 @@
+-- Active: 1707329957355@@localhost@5432@m509A1
 /*
     How many trips started on one day and ended on a different day?
 
@@ -6,6 +7,29 @@
 */
 
 -- Enter your SQL query here
+SELECT
+    EXTRACT(YEAR FROM start_time) AS trip_year,
+    EXTRACT(QUARTER FROM start_time) AS trip_quarter,
+    COUNT(*) AS num_trips
+FROM
+    indego.trips_2021_q3
+WHERE
+    CAST(start_time AS DATE) <> CAST(end_time AS DATE)
+GROUP BY
+    EXTRACT(YEAR FROM start_time),
+    EXTRACT(QUARTER FROM start_time)
+UNION ALL
+SELECT
+    EXTRACT(YEAR FROM start_time) AS trip_year,
+    EXTRACT(QUARTER FROM start_time) AS trip_quarter,
+    COUNT(*) AS num_trips
+FROM
+    indego.trips_2022_q3
+WHERE
+    CAST(start_time AS DATE) <> CAST(end_time AS DATE)
+GROUP BY
+    EXTRACT(YEAR FROM start_time),
+    EXTRACT(QUARTER FROM start_time);
 
 
 

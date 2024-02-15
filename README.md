@@ -74,7 +74,7 @@ Write a query to answer each of the questions below.
 
     _Why are there so many trips of this duration?_
 
-    **Answer:**
+    **Answer:The result shows that the max duration for trips is 1440 minutes, equivalent to 24 hours, within the Indego bike-sharing dataset. It could be attributed to users forgetting to terminate their trips or due to a failure in locking the bikes, resulting in an improper check-in. Given that the bike-sharing service may have a daily maximum charge limit, thus, the duration of trips lasting exactly 1440 minutes could arise from users neglecting to end their trips. Furthermore, some trips consistently have identical start and end position, as evidenced by the exact matching of latitude and longitude coordinates, suggesting systemic issues with certain bikes.**
 
 6. [How many trips in each quarter were shorter than 10 minutes?](query06.sql)
 
