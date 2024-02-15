@@ -7,3 +7,14 @@
 */
 
 -- Enter your SQL query here
+WITH RefPoint AS (
+    SELECT ST_SetSRID(ST_Point(-75.192584, 39.952415), 4326)::geography AS ref_geog
+)
+SELECT
+    id AS station_id,
+    name AS station_name,
+    ROUND(ST_Distance(geog, (SELECT ref_geog FROM RefPoint)) / 50) * 50 AS distance
+FROM
+    indego.station_statuses
+ORDER BY distance ASC
+LIMIT 1;
