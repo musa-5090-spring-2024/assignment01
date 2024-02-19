@@ -10,7 +10,9 @@
 */
 
 -- Enter your SQL query here
-
+SELECT 
+ROUND(((SELECT COUNT(*) FROM trips_2022_q3) - (SELECT COUNT(*) FROM trips_2021_q3)) / 
+(SELECT COUNT(*) FROM trips_2021_q3)::numeric * 100, 2) AS perc_change;
 
 
 /*
