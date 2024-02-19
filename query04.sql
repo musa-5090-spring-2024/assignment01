@@ -6,3 +6,5 @@
 */
 
 -- Enter your SQL query here
+SELECT AVG(duration::numeric) AS avg_duration_22
+FROM trips_2022_q3;
