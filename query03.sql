@@ -8,3 +8,4 @@
 -- Enter your SQL query here
 SELECT AVG(duration::numeric) AS avg_duration_21
 FROM trips_2021_q3;
+/* result: 18.8588798796399851*/
