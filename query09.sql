@@ -7,3 +7,17 @@
 */
 
 -- Enter your SQL query here
+
+with temptable as (
+    select *
+    from indego.trips_2021_q3
+    union
+    select *
+    from indego.trips_2022_q3
+)
+
+select
+    passholder_type,
+    count(*) as num_trips
+from temptable
+group by passholder_type

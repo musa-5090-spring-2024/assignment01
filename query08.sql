@@ -10,6 +10,24 @@
 
 -- Enter your SQL query here
 
+with temptable as (
+    select *
+    from indego.trips_2021_q3
+    union
+    select *
+    from indego.trips_2022_q3
+)
+
+select
+    start_station as station_id,
+    ST_MakePoint(start_lon, start_lat)::geography as station_geog,
+    count(*) as num_trips
+from temptable 
+where extract('hour' from start_time) >= 7 and 
+        extract('hour' from start_time) < 10
+group by station_id, station_geog
+order by num_trips DESC
+limit 5
 
 /*
     Hint: Use the `EXTRACT` function to get the hour of the day from the
