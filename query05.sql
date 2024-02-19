@@ -5,3 +5,8 @@
 */
 
 -- Enter your SQL query here
+SELECT MAX(duration::numeric) AS max_duration
+FROM(
+SELECT duration FROM trips_2021_q3
+UNION
+SELECT duration FROM trips_2022_q3);
