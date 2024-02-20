@@ -7,3 +7,17 @@
 */
 
 -- Enter your SQL query here
+SELECT passholder_type, COUNT(*) AS num_trips
+FROM(SELECT *
+FROM trips_2021_q3
+UNION 
+SELECT *
+FROM trips_2022_q3)
+GROUP BY passholder_type
+ORDER BY num_trips;
+/* result "Walk-up"	2
+          "NULL"	43
+          "Day Pass"	61659
+          "Indego365"	109251
+          "Indego30"	441856
+*/

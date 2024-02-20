@@ -6,6 +6,15 @@
 */
 
 -- Enter your SQL query here
+SELECT '2021' AS trip_year, 'Q3' AS trip_quarter, COUNT(*) AS num_trips
+FROM trips_2021_q3
+WHERE EXTRACT(DAY FROM CAST(start_time AS DATE)) != EXTRACT(DAY FROM CAST(end_time AS DATE))
+UNION
+SELECT '2022' AS trip_year, 'Q3' AS trip_quarter, COUNT(*) AS num_trips
+FROM trips_2022_q3
+WHERE EXTRACT(DAY FROM CAST(start_time AS DATE)) != EXTRACT(DAY FROM CAST(end_time AS DATE));
+/* result: In 2021, there are 2301 trips ended on a different day. In 2022, there are 2060 trips ended on a different day.
+*/
 
 
 
