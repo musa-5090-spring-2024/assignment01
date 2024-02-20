@@ -7,3 +7,11 @@
 */
 
 -- Enter your SQL query here
+SELECT 
+    id as station_id,
+    name as station_name,
+    ROUND((ST_Distance(geog::geography, ST_MakePoint(-75.192584, 39.952415)::geography))::numeric, -1) as distance
+FROM indego.station_statuses
+ORDER BY 
+    distance
+LIMIT 1;

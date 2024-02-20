@@ -6,3 +6,10 @@
 */
 
 -- Enter your SQL query here
+ SELECT
+  ROUND(
+    CAST(
+      (SELECT avg(duration)FROM indego.trips_2022_q3)
+    AS NUMERIC),
+    2
+  ) AS avg_duration;
