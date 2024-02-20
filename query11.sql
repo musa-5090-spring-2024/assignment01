@@ -5,3 +5,10 @@
 */
 
 -- Enter your SQL query here
+SELECT
+ROUND(AVG(ST_Distance(geom_32129, ST_Transform(ST_SetSRID
+    (ST_Makepoint(-75.192584, 39.952415), 4326),32129)))/1000) 
+    AS avg_dist_km
+FROM station_status;
+/* result:3
+*/
