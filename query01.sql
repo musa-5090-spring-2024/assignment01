@@ -6,3 +6,6 @@
 -- Enter your SQL query here
 select count(*) as num_trips
 from trips_2021_q3
+/*
+result: 300432
+*/
