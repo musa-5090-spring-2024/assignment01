@@ -6,3 +6,9 @@
 */
 
 -- Enter your SQL query here
+SELECT COUNT(*) AS num_stations_within_1km
+FROM station_status
+WHERE ST_DWithin(geom_32129,ST_Transform(ST_SetSRID(
+    ST_MakePoint(-75.192584, 39.952415), 4326),32129), 1000);
+/* result: 16
+*/
