@@ -1,0 +1,34 @@
+# create table in database from geojson
+# call data directory
+cd /Users/oliveratwood/Documents/GitHub/musa-5090/course-info/assignment01/data
+# Run the following command as the 'postgres' user, which is typically the administrative user for PostgreSQL databases.
+sudo -u postgres \
+# Invoke 'ogr2ogr', a command-line utility from the GDAL (Geospatial Data Abstraction Library) for converting and manipulating geospatial data.
+ogr2ogr \
+# Specify the output format as a PostgreSQL database.
+    -f "PostgreSQL" \
+# Set the name of the new table (layer) in the PostgreSQL database to 'indego.station_statuses'.
+    -nln "indego.station_statuses" \
+# Use a layer creation option to overwrite the existing table if it exists. This ensures that the import process will replace the table 'indego.station_statuses' if it already exists in the database.
+    -lco "OVERWRITE=yes" \
+# Define the PostgreSQL database connection string:
+# - 'host=localhost' specifies that the database server is running on the local machine.
+# - 'port=5432' indicates the port number on which the PostgreSQL server is listening (5432 is the default).
+# - 'dbname=Assignment1' is the name of the database to which the data will be imported.
+# - 'user=oliveratwood' and 'password=postgres' are the credentials used to authenticate with the database.
+    PG:"host=localhost port=5432 dbname=Assignment1 user=oliveratwood password=postgres" \
+# Specify the input file from which to import data. In this case, 'stations.geojson' is a GeoJSON file containing geospatial data.
+    "stations.geojson"
+
+sudo -u oliveratwood \
+
+
+cd /Users/oliveratwood/Documents/GitHub/musa-5090/course-info/assignment01/data
+ogr2ogr \
+    -f "PostgreSQL" \
+    -nln "indego.station_statuses" \
+    -lco GEOMETRY_NAME=geog \
+    -lco GEOM_TYPE=GEOGRAPHY \
+    -lco "OVERWRITE=yes" \
+    PG:"host=localhost port=5432 dbname=Assignment1 user=oliveratwood password=postgres" \
+    "stations.geojson"
