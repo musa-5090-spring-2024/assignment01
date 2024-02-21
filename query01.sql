@@ -5,4 +5,6 @@
 
 -- Enter your SQL query here
 select count(*) as num_trips
-from indego.trips_2021_q3
+from indego.trips_2021_q3;
+
+--300432 Total Trips in 2021 q3

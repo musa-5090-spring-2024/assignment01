@@ -41,22 +41,22 @@ PGPASSWORD=postgres psql \
   -h localhost \
   -p 5432 \
   -U postgres \
-  -d musa_509 \
-  -c "\copy indego.trips_2021_q3 FROM '${DATADIR}/indego-trips-2021-q3.csv' DELIMITER ',' CSV HEADER;"
+  -d musa509assign_1 \
+  -c "\copy indego.trips_2021_q3 FROM 'indego-trips-2021-q3/indego-trips-2021-q3.csv' DELIMITER ',' CSV HEADER;"
 PGPASSWORD=postgres psql \
   -h localhost \
   -p 5432 \
   -U postgres \
-  -d musa_509 \
-  -c "\copy indego.trips_2022_q3 FROM '${DATADIR}/indego-trips-2022-q3.csv' DELIMITER ',' CSV HEADER;"
+  -d musa509assign_1 \
+  -c "\copy indego.trips_2022_q3 FROM 'indego-trips-2022-q3.csv' DELIMITER ',' CSV HEADER;"
 
 # Download and load station data into database
-curl -L http://www.rideindego.com/stations/json/ > ${DATADIR}/indego-station-statuses.geojson
+curl -L http://www.rideindego.com/stations/json/ > indego-station-statuses.geojson
 ogr2ogr \
   -f "PostgreSQL" \
   -nln "indego.station_statuses" \
   -lco "OVERWRITE=yes" \
   -lco "GEOM_TYPE=geography" \
   -lco "GEOMETRY_NAME=geog" \
-  PG:"host=localhost port=5432 dbname=musa_509 user=postgres password=postgres" \
-  ${DATADIR}/indego-station-statuses.geojson
+  PG:"host=localhost port=5432 dbname=musa509assign_1 user=avani password=sqlpassword" \
+  indego-station-statuses.geojson
