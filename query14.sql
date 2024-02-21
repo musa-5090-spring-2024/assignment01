@@ -7,11 +7,11 @@
 */
 
 -- Enter your SQL query here
-SELECT 
-    id as station_id,
-    name as station_name,
-    ROUND((ST_Distance(geog::geography, ST_MakePoint(-75.192584, 39.952415)::geography))::numeric, -1) as distance
+SELECT
+    id AS station_id,
+    name AS station_name,
+    ROUND((ST_DISTANCE(geog::geography, ST_MAKEPOINT(-75.192584, 39.952415)::geography)) / 50) * 50 AS distance
 FROM indego.station_statuses
-ORDER BY 
+ORDER BY
     distance
 LIMIT 1;

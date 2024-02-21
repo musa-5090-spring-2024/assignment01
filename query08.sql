@@ -9,13 +9,14 @@
 */
 
 -- Enter your SQL query here
-SELECT 
+SELECT
     station_id,
     station_geog,
     SUM(num_trips) AS num_trips
 FROM (
-    SELECT start_station AS station_id, 
-        ST_MakePoint(start_lon, start_lat)::geography AS station_geog,
+    SELECT
+        start_station AS station_id,
+        ST_MAKEPOINT(start_lon, start_lat)::geography AS station_geog,
         COUNT(*) AS num_trips
     FROM indego.trips_2021_q3
     WHERE EXTRACT(HOUR FROM start_time) IN (7, 8, 9)
@@ -23,8 +24,9 @@ FROM (
 
     UNION ALL
 
-    SELECT start_station AS station_id, 
-        ST_MakePoint(start_lon, start_lat)::geography AS station_geog,
+    SELECT
+        start_station AS station_id,
+        ST_MAKEPOINT(start_lon, start_lat)::geography AS station_geog,
         COUNT(*) AS num_trips
     FROM indego.trips_2022_q3
     WHERE EXTRACT(HOUR FROM start_time) IN (7, 8, 9)

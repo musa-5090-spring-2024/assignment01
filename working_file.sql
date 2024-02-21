@@ -109,17 +109,14 @@ GROUP BY passholder_type
 ORDER BY passholder_type;
 
 --query 10
-SELECT * FROM indego.station_statuses
-LIMIT 5;
-
-SELECT 
-    id as station_id, 
-    geog as station_geog, 
-    ROUND(ST_Distance(ST_MakePoint(-75.192584,39.952415)::geography, geog::geography)::numeric,-1) AS distance
-FROM 
+SELECT
+    id AS station_id,
+    geog AS station_geog,
+    ROUND(ST_DISTANCE(ST_MAKEPOINT(-75.192584, 39.952415)::geography, geog::geography)/50)*50 AS distance
+FROM
     indego.station_statuses
-ORDER BY 
-    distance DESC, station_id;
+ORDER BY
+    distance DESC;
 
 
 --query 11
@@ -135,21 +132,22 @@ FROM indego.station_statuses
 WHERE (ST_Distance(geog::geography, ST_MakePoint(-75.192584, 39.952415)::geography)) < 1000;
 
 --query 13
-SELECT 
-    id as station_id,
-    name as station_name,
-    (ST_Distance(geog::geography, ST_MakePoint(-75.192584, 39.952415)::geography)) as distance
+SELECT
+    id AS station_id,
+    name AS station_name,
+    ROUND(
+    (ST_DISTANCE(geog::geography, ST_MAKEPOINT(-75.192584, 39.952415)::geography))/50)*50 AS distance
 FROM indego.station_statuses
-ORDER BY 
+ORDER BY
     distance DESC
 LIMIT 1;
 
 --query 14
-SELECT 
-    id as station_id,
-    name as station_name,
-    ROUND((ST_Distance(geog::geography, ST_MakePoint(-75.192584, 39.952415)::geography))::numeric, -1) as distance
+SELECT
+    id AS station_id,
+    name AS station_name,
+    ROUND((ST_DISTANCE(geog::geography, ST_MAKEPOINT(-75.192584, 39.952415)::geography))/50)*50 AS distance
 FROM indego.station_statuses
-ORDER BY 
+ORDER BY
     distance
 LIMIT 1;
