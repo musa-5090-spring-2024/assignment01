@@ -74,7 +74,7 @@ Write a query to answer each of the questions below.
 
     _Why are there so many trips of this duration?_
 
-    **Answer:**
+    **Answer: Average duration is about 17 minutes. 17 minutes of biking can travel equal distance to approximately about 50 minutes of walk. Riding bike for such distance is more economical compared to take an Uber. Hence, it is a most effective method of transportation to travel the distance of 17 minutes biking considering economy and time.**
 
 6. [How many trips in each quarter were shorter than 10 minutes?](query06.sql)
 

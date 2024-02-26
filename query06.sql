@@ -7,3 +7,16 @@
 */
 
 -- Enter your SQL query here
+
+WITH all_trips AS (
+    SELECT '2021' AS trip_year, 'Q3' AS trip_quarter, duration -- noqa: LT09
+    FROM indego_trips_2021_q3
+    UNION ALL
+    SELECT '2022' AS trip_year, 'Q3' AS trip_quarter, duration -- noqa: LT09
+    FROM indego_trips_2022_q3
+)
+
+SELECT trip_year, trip_quarter, COUNT(*) AS num_trips -- noqa: LT09
+FROM all_trips
+WHERE CAST(duration AS numeric) < 10
+GROUP BY trip_year, trip_quarter;

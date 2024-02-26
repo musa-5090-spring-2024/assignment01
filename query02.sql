@@ -11,6 +11,19 @@
 
 -- Enter your SQL query here
 
+WITH trips_2022 AS (
+    SELECT COUNT(*) AS cnt_2022
+    FROM indego_trips_2022_q3
+),
+
+trips_2021 AS (
+    SELECT COUNT(*) AS cnt_2021
+    FROM indego_trips_2021_q3
+)
+
+SELECT 100 * (trips_2022.cnt_2022 - trips_2021.cnt_2021) / trips_2021.cnt_2021 AS perc_change
+FROM trips_2022, trips_2021;
+
 
 
 /*
