@@ -6,3 +6,5 @@
 */
 
 -- Enter your SQL query here
+SELECT ROUND(AVG(CAST(duration AS numeric)), 2) AS avg_duration
+FROM indego_trips_2021_q3;

@@ -6,3 +6,17 @@
 */
 
 -- Enter your SQL query here
+
+SELECT -- noqa: LT09
+    COUNT(*) AS num_stations
+FROM (
+    SELECT
+        ST_DISTANCE(
+            ST_SETSRID(ST_MAKEPOINT(longitude, latitude), 4326),
+            ST_SETSRID(ST_MAKEPOINT(-75.192584, 39.952415), 4326)
+        ) AS distance
+    FROM
+        indego_station_statuses
+) AS distances
+WHERE
+    distance <= 1000;
