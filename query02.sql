@@ -1,3 +1,4 @@
+-- Active: 1707948616695@@localhost@5432@ASSIGNMENT1
 /*
     What is the percent change in trips in Q3 2022 as compared to Q3 2021?
 
@@ -11,6 +12,15 @@
 
 -- Enter your SQL query here
 
+WITH trip_counts AS (
+    SELECT
+        (SELECT COUNT(*) FROM indego.trips_2022_q3) AS num_trips22,
+        (SELECT COUNT(*) FROM indego.trips_2021_q3) AS num_trips21
+)
+SELECT
+    CAST(ROUND(100.0 * (num_trips22 - num_trips21) / num_trips21, 2) AS VARCHAR) || '%' AS perc_change
+FROM
+    trip_counts;
 
 
 /*

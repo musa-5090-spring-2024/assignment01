@@ -8,3 +8,16 @@
 */
 
 -- Enter your SQL query here
+
+-- doesnt work
+SELECT
+    id,
+    name,
+    ST_Distance(
+        geog,
+        ST_SetSRID(ST_MakePoint(-75.192584, 39.952415), 4326):: GEOGRAPHY
+    ) AS distance
+FROM
+    indego.station_statuses
+ORDER BY
+    distance;
