@@ -1,3 +1,4 @@
+-- Active: 1707948616695@@localhost@5432@ASSIGNMENT1
 /*
     Which station is closest to Meyerson Hall?
 
@@ -7,3 +8,12 @@
 */
 
 -- Enter your SQL query here
+SELECT
+    id AS station_id,
+    name AS station_name,
+    ROUND(ST_Distance(geog, ST_SetSRID(ST_MakePoint(-75.192584, 39.952415), 4326)::GEOGRAPHY) / 50) * 50 AS distance
+FROM
+    indego.station_statuses
+ORDER BY
+    distance ASC
+LIMIT 1;
