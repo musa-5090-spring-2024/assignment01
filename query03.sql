@@ -6,3 +6,6 @@
 */
 
 -- Enter your SQL query here
+SELECT AVG(duration) AS avg_duration FROM indego.trips_2021_q3;
+
+-- Average duration is 18.86 minutes

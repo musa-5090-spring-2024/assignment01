@@ -8,3 +8,15 @@
 */
 
 -- Enter your SQL query here
+SELECT
+    name AS station_id,
+    longitude || ',' || latitude AS station_geog,
+    ROUND(
+        ST_Distance(
+            ST_GeographyFromText('POINT(-75.192584 39.952415)'),
+            ST_GeographyFromText('POINT(' || longitude || ' ' || latitude || ')')
+        ) / 50.0
+    ) * 50 AS distance
+FROM
+    indego.station_statuses;
+

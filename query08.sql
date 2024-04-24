@@ -9,7 +9,20 @@
 */
 
 -- Enter your SQL query here
-
+SELECT
+    start_station AS station_id,
+    ST_AsText(station_geog) AS station_geog,
+    COUNT(*) AS num_trips
+FROM
+    indego.trips_2021_q3
+WHERE
+    EXTRACT(HOUR FROM start_time) BETWEEN 7 AND 9 AND
+    ST_AsText(station_geog) IS NOT NULL -- Assuming station_geog is a geography column
+GROUP BY
+    start_station, station_geog
+ORDER BY
+    num_trips DESC
+LIMIT 5;
 
 /*
     Hint: Use the `EXTRACT` function to get the hour of the day from the

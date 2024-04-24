@@ -5,3 +5,7 @@
 */
 
 -- Enter your SQL query here
+WITH temporaryTable AS (SELECT MAX(duration) AS max_duration FROM indego.trips_2021_q3
+UNION 
+SELECT MAX(duration) AS max_duration FROM indego.trips_2022_q3) 
+SELECT * FROM temporaryTable;
