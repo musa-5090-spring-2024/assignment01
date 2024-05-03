@@ -36,11 +36,7 @@ Load all three datasets into a PostgreSQL database schema named `indego` (the na
 * **Table**: `indego.trips_2022_q3`  
   **Fields**: (same as above)
 
-* **Table**: `indego.station_statuses`  
-  **Fields** (at a minimum -- there may be many more):
-    * `id INTEGER`
-    * `name TEXT` (or `CHARACTER VARYING`)
-    * `geog GEOGRAPHY`
+*  
     * ...
 
 ## Questions
@@ -74,7 +70,7 @@ Write a query to answer each of the questions below.
 
     _Why are there so many trips of this duration?_
 
-    **Answer:**
+    **Answer:** 1440 minutes is equal to 24 hours, so if someone rented but did not return a bike, the max amount of time for any given ride on a given day would be 24 hours.
 
 6. [How many trips in each quarter were shorter than 10 minutes?](query06.sql)
 
