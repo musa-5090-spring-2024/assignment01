@@ -6,4 +6,10 @@
     two columns: `passholder_type` and `num_trips`.
 */
 
--- Enter your SQL query here
+SELECT 
+    passholder_type,
+    COUNT(*) AS num_trips
+FROM 
+    trips
+GROUP BY 
+    passholder_type;

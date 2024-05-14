@@ -5,4 +5,20 @@
     of stations (num_stations).
 */
 
--- Enter your SQL query here
+SELECT
+    COUNT(*) AS num_stations
+FROM
+    (
+        SELECT
+            name,
+            the_geog AS station_geog
+        FROM
+            indego.stations
+        WHERE
+            ST_DWithin(
+                the_geog,
+                ST_SetSRID(ST_MakePoint(-75.192584, 39.952415), 4326),
+                1000
+            )
+    ) AS subquery;
+

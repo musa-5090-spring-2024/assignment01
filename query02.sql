@@ -1,3 +1,4 @@
+-- Active: 1708533339248@@127.0.0.1@5432@assignment01
 /*
     What is the percent change in trips in Q3 2022 as compared to Q3 2021?
 
@@ -5,11 +6,16 @@
     number calculated in the previous question), find the percent change in the
     number of trips in Q3 2022 as compared to 2021. Round your answer to two
     decimal places and name the resulting field `perc_change`.
-
-    Remember you can do calculations in the select clause.
 */
 
--- Enter your SQL query here
+SELECT 
+    ROUND(((total_trips_2022 - total_trips_2021) / CAST(total_trips_2021 AS decimal)*100), 2)::text || '%' AS perc_change
+FROM 
+    (
+        SELECT 
+            (SELECT COUNT(*) FROM indego.trips_2021_q3) AS total_trips_2021,
+            (SELECT COUNT(*) FROM indego.trips_2022_q3) AS total_trips_2022
+    );
 
 
 
