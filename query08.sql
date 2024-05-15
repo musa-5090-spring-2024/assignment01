@@ -8,7 +8,25 @@
     station (named `num_trips`).
 */
 
--- Enter your SQL query here
+CREATE TABLE indego.trips AS
+SELECT * FROM indego.trips_2022_q3
+UNION ALL
+SELECT * FROM indego.trips_2021_q3;
+
+SELECT 
+    start_station AS station_id,
+    CONCAT('(', start_lat, ', ', start_lon, ')') AS station_geog,
+    COUNT(*) AS num_trips
+FROM 
+    indego.trips
+WHERE 
+    EXTRACT(HOUR FROM start_time) >= 7 
+    AND EXTRACT(HOUR FROM start_time) < 10
+GROUP BY 
+    start_station, station_geog
+ORDER BY 
+    num_trips DESC
+LIMIT 5;
 
 
 /*

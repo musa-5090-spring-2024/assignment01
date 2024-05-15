@@ -5,7 +5,33 @@
     trip_quarter, and one column named num_trips.
 */
 
--- Enter your SQL query here
+SELECT 
+    trip_year,
+    trip_quarter,
+    COUNT(*) AS num_trip
+FROM 
+    (
+        SELECT 
+            EXTRACT(YEAR FROM start_time) AS trip_year,
+            EXTRACT(QUARTER FROM start_time) AS trip_quarter,
+            start_time,
+            end_time
+        FROM 
+            indego.trips_2021_q3
+        UNION ALL
+        SELECT 
+            EXTRACT(YEAR FROM start_time) AS trip_year,
+            EXTRACT(QUARTER FROM start_time) AS trip_quarter,
+            start_time,
+            end_time
+        FROM 
+            indego.trips_2022_q3
+    ) AS bothquarters
+WHERE 
+    CAST(start_time AS DATE) <> CAST(end_time AS DATE)
+GROUP BY 
+    trip_year,
+    trip_quarter;
 
 
 

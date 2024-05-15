@@ -9,7 +9,14 @@
     Remember you can do calculations in the select clause.
 */
 
--- Enter your SQL query here
+SELECT
+ROUND(((trips2022 - trips2021) / CAST(trips2021 AS decimal)*100), 2)::text || '%' AS pct_change
+FROM 
+    (
+        SELECT 
+            (SELECT COUNT(*) FROM indego.trips_2021_q3) AS trips2021,
+            (SELECT COUNT(*) FROM indego.trips_2022_q3) AS trips2022
+    );
 
 
 

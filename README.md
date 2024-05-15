@@ -65,26 +65,43 @@ Write a query to answer each of the questions below.
     **Result:** 300,432
 
 2. [What is the percent change in trips in Q3 2022 as compared to Q3 2021?](query02.sql)
-
+**Result:** 3.98%
 3. [What is the average duration of a trip for 2021?](query03.sql)
+**Result** 18.86
 
 4. [What is the average duration of a trip for 2022?](query04.sql)
-
+***Result*** 17.88
 5. [What is the longest duration trip across the two quarters?](query05.sql)
+
+  ***Result** 1440
 
     _Why are there so many trips of this duration?_
 
-    **Answer:**
+    **Answer:** There are so many trips of this duration because it is over a year. Additionally we are getting the max duration for each year. 
+
 
 6. [How many trips in each quarter were shorter than 10 minutes?](query06.sql)
-
+2021: 1224528
+2022: 137372
 7. [How many trips started on one day and ended on a different day?](query07.sql)
+    2021: 2301
+    2022: 2060
 
 8. [Give the five most popular starting stations across all years between 7am and 9:59am.](query08.sql)
 
-    _Hint: Use the `EXTRACT` function to get the hour of the day from the timestamp._
+ 3032: (39.945271, -75.17971), 1828
+3102 (39.96759, -75.17952), 1689
+3012 (39.942181, -75.177467), 1614
+3066 (39.94561, -75.173477), 1529
+3007  (39.945171, -75.159927), 1434
 
 9. [List all the passholder types and number of trips for each across all years.](query09.sql)
+   ***RESULT***
+    Indego30: 441856
+    Indgego365: 109251
+    DayPass: 61659
+    NULL: 43
+    Walk-up: 2
 
 10. [Using the station status dataset, find the distance in meters of each station from Meyerson Hall.](query10.sql)
 
