@@ -7,3 +7,16 @@
 */
 
 -- Enter your SQL query here
+SELECT
+  EXTRACT(YEAR FROM start_time) AS trip_year,
+  EXTRACT(QUARTER FROM start_time) AS trip_quarter,
+  COUNT(*) AS num_trips
+    FROM
+     (SELECT trip_id, duration, start_time FROM indego.trips_2021_q3
+      UNION ALL
+      SELECT trip_id, duration, start_time FROM indego.trips_2022_q3) 
+      AS combined_trips
+    WHERE
+      duration < 10
+    GROUP BY
+    trip_year, trip_quarter;

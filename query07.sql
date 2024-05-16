@@ -17,3 +17,16 @@
     [EXTRACT](https://www.postgresql.org/docs/12/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT)
     function.
 */
+SELECT
+  EXTRACT(YEAR FROM start_time) AS trip_year,
+  EXTRACT(QUARTER FROM start_time) AS trip_quarter,
+  COUNT(*) AS num_trips
+FROM
+     (SELECT * FROM indego.trips_2021_q3
+      UNION ALL
+      SELECT * FROM indego.trips_2022_q3) 
+      AS combined_trips
+WHERE
+  CAST(start_time AS DATE) != CAST(end_time AS DATE)
+GROUP BY
+  trip_year, trip_quarter;
