@@ -55,43 +55,62 @@ Write a query to answer each of the questions below.
 
 1. [How many bike trips in Q3 2021?](query01.sql)
 
-    This file is filled out for you, as an example.
-
-    ```SQL
-    select count(*)
-    from indego.trips_2021_q3
-    ```
-
-    **Result:** 300,432
+- 300,432
 
 2. [What is the percent change in trips in Q3 2022 as compared to Q3 2021?](query02.sql)
+- 3.98%
 
 3. [What is the average duration of a trip for 2021?](query03.sql)
+- 18.86min
 
 4. [What is the average duration of a trip for 2022?](query04.sql)
+- 17.88min
 
 5. [What is the longest duration trip across the two quarters?](query05.sql)
 
     _Why are there so many trips of this duration?_
 
-    **Answer:**
+    - The longest duration is **1,440 min**. It might be a result that some of the bike riders forgot to turn off and lock the bike. So the trip duration lasts for 24 hours.
 
 6. [How many trips in each quarter were shorter than 10 minutes?](query06.sql)
+- Year 2021 Q3: 124,528
+- Year 2022 Q3: 137,372
 
 7. [How many trips started on one day and ended on a different day?](query07.sql)
+- Year 2021 Q3: 2,301
+- Year 2022 Q3: 2,060
 
 8. [Give the five most popular starting stations across all years between 7am and 9:59am.](query08.sql)
 
     _Hint: Use the `EXTRACT` function to get the hour of the day from the timestamp._
+   - Station #3032: 1,828 trips
+   - Station #3102: 1,689 trips
+   - Station #3012: 1,614 trips
+   - Station #3066: 1,529 trips
+   - Station #3007: 1,434 trips
 
 9. [List all the passholder types and number of trips for each across all years.](query09.sql)
+- Day Pass: 61,659
+- Indego30: 441,856
+- Indego365: 109,251
+- Walk-up: 2
+- Null: 43
 
 10. [Using the station status dataset, find the distance in meters of each station from Meyerson Hall.](query10.sql)
+- "\outcome\query10_result.csv"
 
 11. [What is the average distance (in meters) of all stations from Meyerson Hall?](query11.sql)
+- 3km
 
 12. [How many stations are within 1km of Meyerson Hall?](query12.sql)
+- 16
 
 13. [Which station is furthest from Meyerson Hall?](query13.sql)
+- station_id = 3323
+- station_name = Manayunk Bridge
+- distance = 8900m
 
 14. [Which station is closest to Meyerson Hall?](query14.sql)
+- station_id = 3208
+- station_name = 34TH & Spruce
+- distance = 200m

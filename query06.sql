@@ -7,3 +7,32 @@
 */
 
 -- Enter your SQL query here
+WITH TripCategories AS (
+    SELECT
+        EXTRACT(YEAR FROM start_time) AS trip_year,
+        EXTRACT(QUARTER FROM start_time) AS trip_quarter,
+        COUNT(*) AS num_trips
+    FROM indego.trips_2021_q3
+    WHERE duration < 10
+    GROUP BY trip_year, trip_quarter
+
+    UNION
+
+    SELECT
+        EXTRACT(YEAR FROM start_time) AS trip_year,
+        EXTRACT(QUARTER FROM start_time) AS trip_quarter,
+        COUNT(*) AS num_trips
+    FROM indego.trips_2022_q3
+    WHERE duration < 10
+    GROUP BY trip_year, trip_quarter
+)
+
+SELECT
+    trip_year,
+    trip_quarter,
+    num_trips
+FROM TripCategories;
+
+-- Result:
+-- Year 2021 Q3: 124,528
+-- Year 2022 Q3: 137,372

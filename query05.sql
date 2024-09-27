@@ -5,3 +5,15 @@
 */
 
 -- Enter your SQL query here
+WITH MaxDuration AS (
+    SELECT MAX(duration) AS max_duration
+    FROM indego.trips_2021_q3
+    UNION
+    SELECT MAX(duration) AS max_duration
+    FROM indego.trips_2022_q3
+)
+
+SELECT MAX(max_duration) AS max_duration
+FROM MaxDuration;
+
+-- Result: 1,440min
